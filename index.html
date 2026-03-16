@@ -1,282 +1,140 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>For Naa Shika ❤️</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Poppins:wght@300;400;600&display=swap');
-        
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Naa Shika ❤️</title>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Poppins:wght@300;400;600&display=swap');
+    
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
-        body {
-            font-family: 'Poppins', sans-serif;
-            overflow-x: hidden;
-            background: linear-gradient(135deg, #0c0c1a 0%, #1a0033 50%, #2d1b69 100%);
-            min-height: 100vh;
-            position: relative;
-            color: white;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+    body {
+        font-family: 'Poppins', sans-serif;
+        background: linear-gradient(135deg, #ffe6f0 0%, #ffd9e6 100%);
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        overflow: hidden;
+        text-align: center;
+        padding: 20px;
+    }
 
-        /* Night Sky & Background */
-        #stars { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1; }
-        .star { position: absolute; background: white; border-radius: 50%; animation: twinkle 2s infinite alternate; }
-        @keyframes twinkle { 0% { opacity: 0.3; transform: scale(1); } 100% { opacity: 1; transform: scale(1.2); } }
-        
-        .shooting-star { position: absolute; width: 2px; height: 2px; background: white; box-shadow: 0 0 10px #fff; animation: shoot 3s linear forwards; }
-        @keyframes shoot { 0% { transform: translateX(0) translateY(0) rotate(45deg); opacity: 1; } 100% { transform: translateX(400px) translateY(400px) rotate(45deg); opacity: 0; } }
+    h1 {
+        font-family: 'Dancing Script', cursive;
+        font-size: clamp(2rem, 5vw, 4rem);
+        color: #ff3366;
+        margin-bottom: 1rem;
+    }
 
-        .heart { position: absolute; color: #ff6b9d; pointer-events: none; z-index: 2; animation: float 6s infinite linear; }
-        @keyframes float { 0% { transform: translateY(100vh) rotate(0deg); opacity: 1; } 100% { transform: translateY(-100px) rotate(360deg); opacity: 0; } }
+    p.message {
+        font-size: 1.3rem;
+        color: #333;
+        background: rgba(255,255,255,0.6);
+        padding: 20px;
+        border-radius: 15px;
+        max-width: 600px;
+        min-height: 80px;
+        margin: 20px auto;
+        line-height: 1.6;
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.6s ease, transform 0.6s ease;
+    }
 
-        /* UI Containers */
-        .container { position: relative; z-index: 10; max-width: 600px; width: 90%; padding: 20px; text-align: center; }
+    p.message.show {
+        opacity: 1;
+        transform: translateY(0);
+    }
 
-        .title {
-            font-family: 'Dancing Script', cursive;
-            font-size: clamp(2rem, 8vw, 4rem);
-            background: linear-gradient(45deg, #ff6b9d, #fff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 1.5rem;
-        }
+    button {
+        font-family: 'Poppins', sans-serif;
+        font-weight: 600;
+        font-size: 1.1rem;
+        padding: 15px 30px;
+        background: linear-gradient(45deg, #ff6699, #ff3366);
+        color: white;
+        border: none;
+        border-radius: 50px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 10px 20px rgba(255, 51, 102, 0.4);
+        margin-top: 15px;
+    }
 
-        .letter-box {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(15px);
-            border-radius: 20px;
-            padding: 2rem;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-            margin-bottom: 2rem;
-        }
+    button:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 15px 30px rgba(255, 51, 102, 0.6);
+    }
 
-        #loveLetter { font-size: 1.1rem; line-height: 1.8; min-height: 100px; }
-
-        .reason-display {
-            background: white;
-            color: #2d1b69;
-            padding: 1.5rem;
-            border-radius: 15px;
-            margin: 1.5rem 0;
-            font-style: italic;
-            font-weight: 500;
-            opacity: 0;
-            transform: scale(0.9);
-            transition: all 0.5s ease;
-            display: none;
-        }
-        .reason-display.show { opacity: 1; transform: scale(1); display: block; }
-
-        /* Buttons */
-        .btn {
-            background: linear-gradient(45deg, #ff6b9d, #c44569);
-            color: white;
-            border: none;
-            padding: 15px 30px;
-            border-radius: 50px;
-            font-weight: 600;
-            cursor: pointer;
-            margin: 10px;
-            transition: 0.3s;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            box-shadow: 0 10px 20px rgba(255, 107, 157, 0.3);
-        }
-        .btn:hover { transform: translateY(-3px); box-shadow: 0 15px 25px rgba(255, 107, 157, 0.5); }
-
-        .music-toggle { position: fixed; bottom: 20px; right: 20px; width: 60px; height: 60px; border-radius: 50%; background: rgba(255,255,255,0.2); backdrop-filter: blur(10px); border: none; color: white; cursor: pointer; z-index: 100; font-size: 1.5rem; }
-
-        .countdown { font-weight: bold; color: #ff6b9d; margin-top: 20px; font-size: 0.9rem; }
-    </style>
+</style>
 </head>
 <body>
 
-    <div id="stars"></div>
-    <div id="hearts"></div>
+<h1>For Naa Shika ❤️</h1>
+<p class="message" id="messageBox"></p>
+<button id="surpriseBtn">💖 Show Me Why You Love Me</button>
 
-    <div class="container">
-        <h1 class="title">For Naa Shika ❤️</h1>
-        
-        <div class="letter-box">
-            <div id="loveLetter">Click the music button to begin our story...</div>
-            <div class="reason-display" id="reasonDisplay"></div>
-        </div>
+<script>
+    // Full array of 1000 romantic messages (only a few shown for brevity, add all your 1000)
+    const surpriseMessages = [
+        "Your smile changes my whole mood.",
+        "You make ordinary days feel special.",
+        "You listen to me in a way that feels safe.",
+        "Your voice is one of my favorite sounds.",
+        "You inspire me to be better every day.",
+        "The way you laugh makes my heart happy.",
+        "You understand me without me saying much.",
+        "Your hugs feel like home.",
+        "You make me excited about tomorrow.",
+        "Your kindness shines through everything you do.",
+        "You make me feel seen and valued.",
+        "The way your eyes light up when you're happy.",
+        "You make challenges feel manageable together.",
+        "Your passion for life is contagious.",
+        "You remember the little things that matter to me.",
+        "Your strength encourages me to be strong too.",
+        "You make silence comfortable.",
+        "Your creativity never ceases to amaze me.",
+        "You celebrate my wins like they're your own.",
+        "Your gentle touch calms my soul.",
+        "You make me want to be the best version of myself."
+        // ... add remaining messages until all 1000
+    ];
 
-        <div class="buttons">
-            <button class="btn" onclick="showNewReason()">💖 Why I Love You</button>
-            <button class="btn" onclick="openSecretLetter()">💌 Open Secret Letter</button>
-        </div>
+    const messageBox = document.getElementById('messageBox');
+    const btn = document.getElementById('surpriseBtn');
 
-        <div class="countdown" id="countdown">⏳ Loading our next moment...</div>
-    </div>
+    function typeWriterEffect(element, text, speed = 50) {
+        element.innerHTML = '';
+        let i = 0;
+        element.classList.add('show');
 
-    <button class="music-toggle" id="musicToggle" onclick="toggleMusic()">🎵</button>
-
-    <script>
-        const herName = "Naa Shika";
-        const loveReasons = [
-            "Your smile lights up my world.", "Your laughter is my favorite sound.",
-            "The way you look at me makes me feel at home.", "Your voice soothes my soul.",
-            "You make ordinary moments extraordinary.", "Your hugs feel like safety.",
-            "Your kindness inspires me.", "You understand me in ways no one else does.",
-            "Your eyes are like a universe I want to explore.", "You make me a better person.",
-            "Your patience amazes me.", "You always know how to cheer me up.",
-            "Your creativity inspires me daily.", "The way you care for others is beautiful.",
-            "You challenge me to grow.", "You make me feel seen and valued.",
-            "Your voice makes any day brighter.", "You're my favorite person to talk to.",
-            "You have the most beautiful heart.", "Your hugs are my safe haven.",
-            "You make life feel magical.", "You are endlessly supportive.",
-            "Your laughter is contagious.", "You make me believe in love.",
-            "You accept me as I am.", "Your confidence inspires me.",
-            "You're thoughtful in ways I can't describe.", "You make every day better just by being in it.",
-            "Your honesty builds trust.", "You have the sweetest soul.",
-            "You make the simplest things special.", "Your love feels like home.",
-            "You're my favorite hello and hardest goodbye.", "Your eyes sparkle when you smile.",
-            "You bring peace to my chaos.", "You make me feel lucky to be alive.",
-            "Your touch calms me.", "You're my partner in everything.",
-            "You make me laugh like no one else.", "You're endlessly patient with me.",
-            "Your thoughts and ideas fascinate me.", "You always know what to say.",
-            "You make ordinary days feel like adventures.", "Your support gives me strength.",
-            "You inspire me to be my best self.", "Your curiosity is contagious.",
-            "You make me feel understood.", "You have the kindest heart.",
-            "You make my dreams feel possible.", "You are my safe place.",
-            "Your determination amazes me.", "You light up every room you enter.",
-            "You have the most beautiful laugh.", "You make love feel effortless.",
-            "You bring joy wherever you go.", "You have a beautiful mind.",
-            "Your honesty is refreshing.", "You make every moment worth remembering.",
-            "You inspire me to dream bigger.", "You're my favorite person to be around.",
-            "You have a magical way of making me happy.", "You make challenges feel easier.",
-            "You're my constant thought.", "Your love is unconditional.",
-            "You make me feel safe being myself.", "You are my sunshine on cloudy days.",
-            "Your spirit is uplifting.", "You make me feel appreciated.",
-            "Your love is my anchor.", "You are endlessly fascinating.",
-            "You bring warmth to my life.", "Your smile is my favorite view.",
-            "You make every place feel like home.", "You give me hope.",
-            "You're my best friend.", "You make ordinary conversations special.",
-            "You are thoughtful beyond measure.", "Your love motivates me.",
-            "You make life brighter with your presence.", "Your hugs make everything better.",
-            "You bring laughter to my soul.", "You're my favorite person to dream with.",
-            "You have a heart full of love.", "You make me feel alive.",
-            "You are patient and understanding.", "Your love is my guiding light.",
-            "You make me want to be a better human.", "You have a beautiful soul that shines.",
-            "You make my heart skip beats.", "Your support is unwavering.",
-            "You inspire me with your strength.", "You make love feel magical.",
-            "You are my favorite thought.", "You make the world a better place.",
-            "You are endlessly loving.", "You make every second worth it.",
-            "You are my heart's home.", "Your presence is comforting.",
-            "You make me feel infinite love.", "You are my everything, Naa Shika.",
-            "Your gentle nature melts my heart.", "You make me excited for every tomorrow.",
-            "Your wisdom guides me.", "You make me feel truly cherished.",
-            "Your passion ignites my soul.", "You create beauty wherever you go.",
-            "Your resilience inspires me daily.", "You make my heart feel full.",
-            "Your love is my greatest treasure.", "You understand my silence.",
-            "Your dreams become my dreams.", "You make every journey worthwhile.",
-            "Your light never fades.", "You are my forever favorite.",
-            "Your love story is my favorite.", "You make eternity feel possible.",
-            "Your heart beats in sync with mine.", "You are my rare and beautiful find.",
-            "Your love makes me limitless."
-        ];
-
-        // --- Core Logic ---
-        function typeWriter(text, elementId, speed = 50) {
-            let i = 0;
-            const el = document.getElementById(elementId);
-            el.innerHTML = "";
-            function type() {
-                if (i < text.length) {
-                    el.innerHTML += text.charAt(i);
-                    i++;
-                    setTimeout(type, speed);
-                }
-            }
-            type();
-        }
-
-        function createStars() {
-            const container = document.getElementById('stars');
-            for (let i = 0; i < 100; i++) {
-                const star = document.createElement('div');
-                star.className = 'star';
-                star.style.width = star.style.height = Math.random() * 3 + 'px';
-                star.style.left = Math.random() * 100 + '%';
-                star.style.top = Math.random() * 100 + '%';
-                star.style.animationDelay = Math.random() * 2 + 's';
-                container.appendChild(star);
+        function type() {
+            if(i < text.length){
+                element.innerHTML += text.charAt(i);
+                i++;
+                setTimeout(type, speed);
             }
         }
+        type();
+    }
 
-        function showNewReason() {
-            const display = document.getElementById('reasonDisplay');
-            const reason = loveReasons[Math.floor(Math.random() * loveReasons.length)];
-            display.classList.remove('show');
-            setTimeout(() => {
-                display.innerText = `"${reason}"`;
-                display.classList.add('show');
-                createShootingStar();
-            }, 200);
-        }
+    btn.addEventListener('click', () => {
+        // Pick a random message
+        const randomIndex = Math.floor(Math.random() * surpriseMessages.length);
+        const message = surpriseMessages[randomIndex];
 
-        function createShootingStar() {
-            const star = document.createElement('div');
-            star.className = 'shooting-star';
-            star.style.left = Math.random() * 50 + '%';
-            star.style.top = Math.random() * 50 + '%';
-            document.body.appendChild(star);
-            setTimeout(() => star.remove(), 3000);
-        }
+        // Reset animation
+        messageBox.classList.remove('show');
+        setTimeout(() => {
+            typeWriterEffect(messageBox, message, 40);
+        }, 200);
+    });
 
-        function openSecretLetter() {
-            const text = `Naa Shika, even when we aren't talking, you are the gravity that holds my world together. This page is a reminder that my love for you is as vast as the sky above.`;
-            typeWriter(text, 'loveLetter', 40);
-        }
+</script>
 
-        function updateCountdown() {
-            const nextTalk = new Date("March 20, 2026 18:00:00").getTime();
-            const now = new Date().getTime();
-            const diff = nextTalk - now;
-            const d = Math.floor(diff / (1000 * 60 * 60 * 24));
-            const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-            document.getElementById('countdown').innerText = `⏳ ${d}d ${h}h ${m}m until we talk again ❤️`;
-        }
-
-        // Music System
-        let audioCtx;
-        function toggleMusic() {
-            if (!audioCtx) {
-                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-                setInterval(playSoftNote, 2000);
-                document.getElementById('musicToggle').innerText = "🔇";
-                typeWriter(`My dear ${herName}, welcome to our little universe...`, 'loveLetter');
-            } else {
-                audioCtx.close();
-                audioCtx = null;
-                document.getElementById('musicToggle').innerText = "🎵";
-            }
-        }
-
-        function playSoftNote() {
-            if (!audioCtx) return;
-            const osc = audioCtx.createOscillator();
-            const gain = audioCtx.createGain();
-            osc.connect(gain);
-            gain.connect(audioCtx.destination);
-            osc.frequency.setValueAtTime(261.63 + (Math.random() * 100), audioCtx.currentTime);
-            gain.gain.setValueAtTime(0.05, audioCtx.currentTime);
-            gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 2);
-            osc.start();
-            osc.stop(audioCtx.currentTime + 2);
-        }
-
-        window.onload = () => {
-            createStars();
-            updateCountdown();
-            setInterval(updateCountdown, 60000);
-        };
-    </script>
 </body>
 </html>
