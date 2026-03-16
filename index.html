@@ -1,90 +1,164 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Why I Love You ❤️</title>
+<title>For My Love ❤️</title>
 
 <style>
 
 body{
-    background:#ffe6f0;
-    font-family:Arial, sans-serif;
-    text-align:center;
-    padding-top:100px;
+background:#ffe6f0;
+font-family:Arial;
+text-align:center;
+overflow:hidden;
+margin-top:80px;
 }
 
 h1{
-    color:#ff3366;
+color:#ff3366;
 }
 
 button{
-    padding:15px 25px;
-    font-size:16px;
-    background:#ff3366;
-    color:white;
-    border:none;
-    border-radius:8px;
-    cursor:pointer;
+padding:12px 20px;
+font-size:16px;
+background:#ff3366;
+color:white;
+border:none;
+border-radius:8px;
+cursor:pointer;
+margin:10px;
 }
 
 button:hover{
-    background:#e6005c;
+background:#e6005c;
 }
 
-#reason{
-    margin-top:30px;
-    font-size:22px;
-    color:#333;
-    width:70%;
-    margin-left:auto;
-    margin-right:auto;
+#message{
+font-size:20px;
+margin-top:20px;
+color:#333;
+width:70%;
+margin-left:auto;
+margin-right:auto;
+}
+
+#countdown{
+font-size:22px;
+margin-top:20px;
+color:#ff3366;
+}
+
+.heart{
+position:fixed;
+bottom:-20px;
+font-size:20px;
+animation:float 6s linear infinite;
+}
+
+@keyframes float{
+0%{transform:translateY(0);}
+100%{transform:translateY(-100vh);}
 }
 
 </style>
+
 </head>
 
 <body>
 
-<h1>Reasons Why I Love You ❤️</h1>
+<h1 id="title"></h1>
 
-<p>Click the button whenever you miss me</p>
+<div id="letter"></div>
 
-<button onclick="generateLove()">Show Me</button>
+<div id="countdown"></div>
 
-<p id="reason"></p>
+<button onclick="missMe()">I Miss You</button>
+
+<div id="message"></div>
 
 <script>
 
-var reasons = [
+var herName = "Ama";
 
-"Your smile makes my whole day brighter.",
+document.getElementById("title").innerHTML = "For " + herName + " ❤️";
 
-"You understand me in ways no one else does.",
+var text = "My dear " + herName + ", even in silence you are always in my heart. This little page is just a reminder that you are loved, appreciated, and always on my mind.";
 
-"Your voice feels like home.",
+var i = 0;
 
-"You bring peace to my heart.",
+function typeLetter(){
+if(i < text.length){
+document.getElementById("letter").innerHTML += text.charAt(i);
+i++;
+setTimeout(typeLetter,50);
+}
+}
 
-"You make ordinary moments feel special.",
+typeLetter();
 
-"Your kindness makes the world better.",
+var messages = [
 
-"I love the way you care so deeply.",
+"I miss you " + herName + ".",
 
-"You make my life more beautiful just by being in it.",
+"You make my world brighter.",
 
-"Your laughter is my favorite sound.",
+"My heart always finds its way to you.",
 
-"Being with you feels natural and right."
+"Even in silence, I still think about you " + herName + ".", 
+
+"You are my favorite person.",
+
+"I can’t wait to see you again."
 
 ];
 
-function generateLove(){
+function missMe(){
 
-var random = Math.floor(Math.random() * reasons.length);
+var random = Math.floor(Math.random()*messages.length);
 
-document.getElementById("reason").innerHTML = reasons[random];
+document.getElementById("message").innerHTML = messages[random];
 
 }
+
+var target = new Date("April 1, 2026 00:00:00").getTime();
+
+setInterval(function(){
+
+var now = new Date().getTime();
+
+var diff = target - now;
+
+var days = Math.floor(diff/(1000*60*60*24));
+var hours = Math.floor((diff%(1000*60*60*24))/(1000*60*60));
+var minutes = Math.floor((diff%(1000*60*60))/(1000*60));
+
+document.getElementById("countdown").innerHTML =
+days + " days " + hours + " hours " + minutes + " minutes until we talk again ❤️";
+
+},1000);
+
+function createHeart(){
+
+var heart = document.createElement("div");
+
+heart.classList.add("heart");
+
+heart.innerHTML="❤️";
+
+heart.style.left=Math.random()*100+"vw";
+
+heart.style.animationDuration=(3+Math.random()*5)+"s";
+
+document.body.appendChild(heart);
+
+setTimeout(function(){
+
+heart.remove();
+
+},6000);
+
+}
+
+setInterval(createHeart,500);
 
 </script>
 
