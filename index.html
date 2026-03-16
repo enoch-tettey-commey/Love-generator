@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Why I Love You ❤️</title>
+
+<style>
+
+body{
+    background:#ffe6f0;
+    font-family:Arial, sans-serif;
+    text-align:center;
+    padding-top:100px;
+}
+
+h1{
+    color:#ff3366;
+}
+
+button{
+    padding:15px 25px;
+    font-size:16px;
+    background:#ff3366;
+    color:white;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#e6005c;
+}
+
+#reason{
+    margin-top:30px;
+    font-size:22px;
+    color:#333;
+    width:70%;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+</style>
+</head>
+
+<body>
+
+<h1>Reasons Why I Love You ❤️</h1>
+
+<p>Click the button whenever you miss me</p>
+
+<button onclick="generateLove()">Show Me</button>
+
+<p id="reason"></p>
+
+<script>
+
+var reasons = [
+
+"Your smile makes my whole day brighter.",
+
+"You understand me in ways no one else does.",
+
+"Your voice feels like home.",
+
+"You bring peace to my heart.",
+
+"You make ordinary moments feel special.",
+
+"Your kindness makes the world better.",
+
+"I love the way you care so deeply.",
+
+"You make my life more beautiful just by being in it.",
+
+"Your laughter is my favorite sound.",
+
+"Being with you feels natural and right."
+
+];
+
+function generateLove(){
+
+var random = Math.floor(Math.random() * reasons.length);
+
+document.getElementById("reason").innerHTML = reasons[random];
+
+}
+
+</script>
+
+</body>
+
+</html>
